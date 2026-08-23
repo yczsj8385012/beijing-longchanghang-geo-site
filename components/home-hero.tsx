@@ -23,6 +23,16 @@ export function HomeHero({ page = homepage }: { page?: PageDefinition }) {
               先了解处理流程 <span aria-hidden="true">→</span>
             </Link>
           </div>
+          <div className="home-hero__contacts" aria-label="北京隆昌行联系方式">
+            <a className="home-hero__contact" href="tel:13552601231" aria-label="电话 13552601231">
+              <span>电话</span>
+              <strong>13552601231</strong>
+            </a>
+            <p className="home-hero__contact">
+              <span>微信</span>
+              <strong>156658012</strong>
+            </p>
+          </div>
         </div>
 
         <figure className="home-hero__visual">

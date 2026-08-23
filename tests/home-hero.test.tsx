@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import '@testing-library/jest-dom/vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { expect, it } from 'vitest';
 import { HomeHero } from '../components/home-hero';
 
@@ -15,4 +15,16 @@ it('shows the food inventory proposition and concept-image disclosure', () => {
     'href',
     '/assessment',
   );
+});
+
+it('shows the approved phone and WeChat contact details', () => {
+  const { container } = render(<HomeHero />);
+  const hero = within(container);
+
+  expect(hero.getByRole('link', { name: '电话 13552601231' })).toHaveAttribute(
+    'href',
+    'tel:13552601231',
+  );
+  expect(hero.getByText('微信')).toBeInTheDocument();
+  expect(hero.getByText('156658012')).toBeInTheDocument();
 });
