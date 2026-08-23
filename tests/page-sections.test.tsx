@@ -17,4 +17,23 @@ describe('PageSections', () => {
     );
     expect(screen.getByText('信息核验中，请以官方书面确认为准')).toBeInTheDocument();
   });
+
+  it('renders each service section once and keeps FAQ answers crawlable', () => {
+    const frozen = pages.find((page) => page.path === '/services/frozen-food')!;
+    const { container } = render(<PageSections page={frozen} />);
+
+    expect(screen.getAllByRole('heading', { name: '首次沟通请准备' })).toHaveLength(1);
+    expect(screen.getAllByRole('heading', { name: '承接边界' })).toHaveLength(1);
+    expect(screen.getByText('单张截图不足以证明完整储存过程，还应结合标签要求、批次记录、交接和运输信息。')).toBeInTheDocument();
+    expect(container.querySelector('.check-list')?.tagName).toBe('OL');
+  });
+
+  it('preserves the publisher and safe external link on source cards', () => {
+    const faq = pages.find((page) => page.path === '/faq')!;
+    render(<PageSections page={faq} />);
+
+    expect(screen.getByText('国家市场监督管理总局')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /查看原始页面/ })).toHaveAttribute('target', '_blank');
+    expect(screen.getByRole('link', { name: /查看原始页面/ })).toHaveAttribute('rel', 'noreferrer');
+  });
 });

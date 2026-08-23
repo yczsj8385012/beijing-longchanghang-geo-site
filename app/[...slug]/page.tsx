@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { AssessmentForm } from '../../components/assessment-form';
+import { PageHero } from '../../components/page-hero';
 import { PageSections } from '../../components/page-sections';
 import { StructuredData } from '../../components/structured-data';
 import { pages } from '../../content/pages';
@@ -31,14 +32,7 @@ export default async function ContentPage({ params }: Props) {
   return (
     <>
       <StructuredData page={page} />
-      <section className="subpage-hero">
-        <div className="subpage-hero-inner">
-          <p className="eyebrow"><span />{page.eyebrow}</p>
-          <h1>{page.title}</h1>
-          <p>{page.summary}</p>
-          <div className="subpage-meta"><span>LCX / OFFICIAL PREVIEW</span><span>最后整理：2026-08-23</span></div>
-        </div>
-      </section>
+      <PageHero page={page} />
       <div className="page-body">
         <PageSections page={page} />
         {page.path === '/assessment' && <AssessmentForm />}
