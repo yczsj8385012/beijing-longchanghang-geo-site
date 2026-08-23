@@ -1,7 +1,7 @@
 .assessment-tool { width: min(var(--content-max), calc(100% - 48px)); margin: 35px auto 105px; padding: 62px; background: var(--brand-cream); border: 1px solid var(--line); box-shadow: var(--shadow-card); }
 .assessment-intro { display: grid; grid-template-columns: 180px 1fr; column-gap: 40px; margin-bottom: 50px; }
 .assessment-intro .section-kicker { grid-row: span 2; padding-top: 9px; }
-.assessment-intro h2 { max-width: 760px; margin-bottom: 14px; font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 1.25; }
+.assessment-intro h2 { max-width: 760px; margin-bottom: 14px; font-family: var(--sans); font-size: clamp(32px, 4vw, 52px); font-weight: 700; line-height: 1.25; }
 .assessment-intro p { max-width: 700px; color: var(--muted); line-height: 1.8; }
 .form-group { min-width: 0; margin: 0 0 28px; padding: 0; border: 0; }
 .form-group legend { margin-bottom: 12px; color: var(--muted); font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: .08em; }

@@ -1,7 +1,8 @@
 'use client';
 
+/* eslint-disable @next/next/no-html-link-for-pages -- Vinext client Link navigation fails in the production worker; the drawer keeps a browser-native fallback. */
+
 import { useCallback, useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 
 export type NavItem = {
   href: string;
@@ -9,6 +10,29 @@ export type NavItem = {
 };
 
 const dialogId = 'mobile-navigation';
+const desktopMediaQuery = '(min-width: 60rem)';
+
+function isVisible(element: HTMLElement) {
+  let current: HTMLElement | null = element;
+
+  while (current) {
+    const styles = window.getComputedStyle(current);
+    if (current.hidden || current.hasAttribute('inert') || styles.display === 'none' || styles.visibility === 'hidden') {
+      return false;
+    }
+    current = current.parentElement;
+  }
+
+  return true;
+}
+
+function focusSafely(candidates: Array<HTMLElement | null | undefined>) {
+  for (const candidate of candidates) {
+    if (!candidate?.isConnected || !isVisible(candidate)) continue;
+    candidate.focus({ preventScroll: true });
+    if (document.activeElement === candidate) return;
+  }
+}
 
 export function MobileNav({ items }: { items: NavItem[] }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,15 +40,28 @@ export function MobileNav({ items }: { items: NavItem[] }) {
   const panelRef = useRef<HTMLDivElement>(null);
 
   const closeMenu = useCallback(() => {
+    document.body.classList.remove('nav-open');
     setIsOpen(false);
-    triggerRef.current?.focus();
+    const trigger = triggerRef.current;
+    const headerFallback = trigger
+      ?.closest('.header-inner')
+      ?.querySelector<HTMLElement>('.brand, .primary-nav a, .header-cta');
+    focusSafely([trigger, headerFallback]);
   }, []);
 
   useEffect(() => {
     if (!isOpen) return;
 
+    const desktopQuery = typeof window.matchMedia === 'function'
+      ? window.matchMedia(desktopMediaQuery)
+      : null;
+
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') closeMenu();
+    };
+
+    const closeOnDesktop = (event: MediaQueryListEvent) => {
+      if (event.matches) closeMenu();
     };
 
     const trapFocus = (event: KeyboardEvent) => {
@@ -53,12 +90,14 @@ export function MobileNav({ items }: { items: NavItem[] }) {
     document.body.classList.add('nav-open');
     document.addEventListener('keydown', closeOnEscape);
     document.addEventListener('keydown', trapFocus);
+    desktopQuery?.addEventListener('change', closeOnDesktop);
     panelRef.current?.querySelector<HTMLElement>('[data-mobile-nav-initial-focus]')?.focus();
 
     return () => {
       document.body.classList.remove('nav-open');
       document.removeEventListener('keydown', closeOnEscape);
       document.removeEventListener('keydown', trapFocus);
+      desktopQuery?.removeEventListener('change', closeOnDesktop);
     };
   }, [closeMenu, isOpen]);
 
@@ -102,13 +141,13 @@ export function MobileNav({ items }: { items: NavItem[] }) {
             </button>
             <nav className="mobile-nav-links" aria-label="移动导航链接">
               {items.map((item) => (
-                <Link key={item.href} href={item.href} onClick={() => setIsOpen(false)}>
+                <a key={item.href} href={item.href} onClick={closeMenu}>
                   {item.label}
-                </Link>
+                </a>
               ))}
-              <Link className="mobile-nav-cta" href="/assessment" onClick={() => setIsOpen(false)}>
+              <a className="mobile-nav-cta" href="/assessment" onClick={closeMenu}>
                 库存评估 <span aria-hidden="true">↗</span>
-              </Link>
+              </a>
             </nav>
           </div>
         </div>

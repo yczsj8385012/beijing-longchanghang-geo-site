@@ -58,7 +58,7 @@
 
 .nav-open { overflow: hidden; }
 
-@media (max-width: 60rem) {
+@media (max-width: 59.999rem) {
   .header-inner { width: min(100% - 32px, 86.25rem); height: 68px; grid-template-columns: 1fr auto; gap: 16px; }
   .primary-nav, .header-cta { display: none; }
   .mobile-nav { display: block; }
