@@ -64,9 +64,11 @@
   .mobile-nav-toggle { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; border: 1px solid var(--text-ink); background: var(--brand-cream); color: var(--text-ink); font-size: 12px; font-weight: 800; letter-spacing: .08em; }
   .mobile-nav-dialog { position: fixed; inset: 0; z-index: 70; display: grid; grid-template-columns: minmax(64px, 1fr) minmax(260px, 78vw); }
   .mobile-nav-backdrop { grid-column: 1; min-width: 44px; border: 0; background: rgb(16 47 40 / 54%); }
-  .mobile-nav-panel { grid-column: 2; display: grid; align-content: start; gap: 4px; min-height: 100%; padding: 90px 24px 24px; background: var(--brand-cream); box-shadow: -16px 0 34px rgb(16 47 40 / 18%); }
-  .mobile-nav-panel a { display: flex; align-items: center; min-height: 52px; border-bottom: 1px solid var(--line); color: var(--text-ink); font-family: var(--serif); font-size: 22px; }
-  .mobile-nav-panel .mobile-nav-cta { justify-content: space-between; margin-top: 22px; padding: 0 16px; border: 0; background: var(--brand-tomato); color: var(--white); font-family: var(--sans); font-size: 14px; font-weight: 800; }
+  .mobile-nav-panel { grid-column: 2; min-height: 100%; padding: 24px; background: var(--brand-cream); box-shadow: -16px 0 34px rgb(16 47 40 / 18%); }
+  .mobile-nav-close { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; margin-left: auto; border: 1px solid var(--text-ink); background: transparent; color: var(--text-ink); font-size: 12px; font-weight: 800; }
+  .mobile-nav-links { display: grid; align-content: start; gap: 4px; margin-top: 22px; }
+  .mobile-nav-links a { display: flex; align-items: center; min-height: 52px; border-bottom: 1px solid var(--line); color: var(--text-ink); font-family: var(--serif); font-size: 22px; }
+  .mobile-nav-links .mobile-nav-cta { justify-content: space-between; margin-top: 22px; padding: 0 16px; border: 0; background: var(--brand-tomato); color: var(--white); font-family: var(--sans); font-size: 14px; font-weight: 800; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
   .footer-grid > div:first-child { grid-column: 1 / -1; }
 }

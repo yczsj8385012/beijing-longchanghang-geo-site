@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
 export type NavItem = {
@@ -12,22 +12,55 @@ const dialogId = 'mobile-navigation';
 
 export function MobileNav({ items }: { items: NavItem[] }) {
   const [isOpen, setIsOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  const closeMenu = useCallback(() => {
+    setIsOpen(false);
+    triggerRef.current?.focus();
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
 
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setIsOpen(false);
+      if (event.key === 'Escape') closeMenu();
+    };
+
+    const trapFocus = (event: KeyboardEvent) => {
+      if (event.key !== 'Tab') return;
+
+      const focusableElements = Array.from(
+        panelRef.current?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ) ?? [],
+      );
+      if (focusableElements.length === 0) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      const currentElement = document.activeElement;
+
+      if (event.shiftKey && (currentElement === firstElement || !panelRef.current?.contains(currentElement))) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && (currentElement === lastElement || !panelRef.current?.contains(currentElement))) {
+        event.preventDefault();
+        firstElement.focus();
+      }
     };
 
     document.body.classList.add('nav-open');
     document.addEventListener('keydown', closeOnEscape);
+    document.addEventListener('keydown', trapFocus);
+    panelRef.current?.querySelector<HTMLElement>('[data-mobile-nav-initial-focus]')?.focus();
 
     return () => {
       document.body.classList.remove('nav-open');
       document.removeEventListener('keydown', closeOnEscape);
+      document.removeEventListener('keydown', trapFocus);
     };
-  }, [isOpen]);
+  }, [closeMenu, isOpen]);
 
   return (
     <div className="mobile-nav">
@@ -37,7 +70,8 @@ export function MobileNav({ items }: { items: NavItem[] }) {
         aria-label={isOpen ? '关闭导航菜单' : '打开导航菜单'}
         aria-expanded={isOpen}
         aria-controls={dialogId}
-        onClick={() => setIsOpen((open) => !open)}
+        ref={triggerRef}
+        onClick={() => (isOpen ? closeMenu() : setIsOpen(true))}
       >
         <span aria-hidden="true">{isOpen ? '关闭' : '菜单'}</span>
       </button>
@@ -52,19 +86,31 @@ export function MobileNav({ items }: { items: NavItem[] }) {
           <button
             type="button"
             className="mobile-nav-backdrop"
-            aria-label="关闭导航菜单"
-            onClick={() => setIsOpen(false)}
+            aria-label="关闭移动导航遮罩"
+            tabIndex={-1}
+            onClick={closeMenu}
           />
-          <nav className="mobile-nav-panel" aria-label="移动导航链接">
-            {items.map((item) => (
-              <Link key={item.href} href={item.href} onClick={() => setIsOpen(false)}>
-                {item.label}
+          <div className="mobile-nav-panel" ref={panelRef}>
+            <button
+              type="button"
+              className="mobile-nav-close"
+              aria-label="关闭移动导航"
+              data-mobile-nav-initial-focus
+              onClick={closeMenu}
+            >
+              关闭
+            </button>
+            <nav className="mobile-nav-links" aria-label="移动导航链接">
+              {items.map((item) => (
+                <Link key={item.href} href={item.href} onClick={() => setIsOpen(false)}>
+                  {item.label}
+                </Link>
+              ))}
+              <Link className="mobile-nav-cta" href="/assessment" onClick={() => setIsOpen(false)}>
+                库存评估 <span aria-hidden="true">↗</span>
               </Link>
-            ))}
-            <Link className="mobile-nav-cta" href="/assessment" onClick={() => setIsOpen(false)}>
-              库存评估 <span aria-hidden="true">↗</span>
-            </Link>
-          </nav>
+            </nav>
+          </div>
         </div>
       )}
     </div>
