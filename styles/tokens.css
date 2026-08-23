@@ -1,0 +1,57 @@
+:root {
+  --brand-cream: #f8f3e8;
+  --brand-olive: #183f34;
+  --brand-tomato: #c64a31;
+  --brand-kraft: #e9ddc8;
+  --text-ink: #102f28;
+  --text-muted: #52635e;
+  --surface-white: #fffdf8;
+  --line: #cfc4af;
+  --focus-ring: #c64a31;
+  --shadow-card: 0 18px 42px rgb(24 63 52 / 14%);
+  --shadow-offset: 14px 16px 0 rgb(198 74 49 / 16%);
+  --radius-sm: 0.25rem;
+  --radius-md: 0.75rem;
+  --content-max: 72.5rem;
+  --breakpoint-compact: 40rem;
+  --breakpoint-tablet: 60rem;
+  --sans: 'Noto Sans SC', 'Source Han Sans SC', 'Microsoft YaHei', sans-serif;
+  --serif: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', SimSun, serif;
+
+  /* Compatibility aliases keep existing route markup stable during the redesign. */
+  --ink: var(--text-ink);
+  --ink-soft: var(--brand-olive);
+  --paper: var(--brand-cream);
+  --paper-light: var(--surface-white);
+  --muted: var(--text-muted);
+  --orange: var(--brand-tomato);
+  --orange-deep: #963422;
+  --white: #fffefa;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--brand-cream); }
+body {
+  margin: 0;
+  background: var(--surface-white);
+  color: var(--text-ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+p, h1, h2, h3, h4, dl, dd { margin-top: 0; text-wrap: pretty; }
+a { color: inherit; text-decoration: none; touch-action: manipulation; }
+button, input, select, textarea { font: inherit; }
+button, [role='button'], input, select, textarea { min-height: 44px; }
+button { touch-action: manipulation; }
+:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}

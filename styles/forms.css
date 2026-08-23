@@ -1,0 +1,30 @@
+.assessment-tool { width: min(var(--content-max), calc(100% - 48px)); margin: 35px auto 105px; padding: 62px; background: var(--brand-cream); border: 1px solid var(--line); box-shadow: var(--shadow-card); }
+.assessment-intro { display: grid; grid-template-columns: 180px 1fr; column-gap: 40px; margin-bottom: 50px; }
+.assessment-intro .section-kicker { grid-row: span 2; padding-top: 9px; }
+.assessment-intro h2 { max-width: 760px; margin-bottom: 14px; font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 1.25; }
+.assessment-intro p { max-width: 700px; color: var(--muted); line-height: 1.8; }
+.form-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.form-grid label { min-width: 0; padding: 22px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; gap: 11px; }
+.form-grid label > span { color: var(--muted); font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: .04em; }
+.form-grid input, .form-grid select, .form-grid textarea { width: 100%; min-height: 48px; border: 0; border-bottom: 1px solid #87978f; border-radius: 0; outline: none; background: transparent; color: var(--text-ink); }
+.form-grid textarea { min-height: 90px; padding-top: 10px; resize: vertical; }
+.form-grid input:focus, .form-grid select:focus, .form-grid textarea:focus { border-color: var(--brand-tomato); box-shadow: 0 2px 0 var(--brand-tomato); }
+.form-wide { grid-column: 1 / -1; }
+.form-privacy { display: flex; gap: 14px; align-items: flex-start; margin: 24px 0; color: var(--muted); font-size: 12px; }
+.form-privacy span { color: var(--orange-deep); }
+.form-privacy p { margin: 0; }
+.summary-sheet { margin-top: 48px; padding: 32px; background: var(--brand-olive); color: var(--white); }
+.summary-sheet-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; padding-bottom: 22px; border-bottom: 1px solid rgb(255 255 255 / 18%); }
+.summary-sheet-head span { color: var(--brand-tomato); font-family: ui-monospace, monospace; font-size: 9px; letter-spacing: .12em; }
+.summary-sheet-head h2 { margin: 8px 0 0; font-family: var(--serif); font-size: 26px; }
+.summary-sheet-head button { min-height: 44px; padding: 0 18px; border: 1px solid var(--brand-tomato); background: transparent; color: var(--brand-tomato); cursor: pointer; }
+.summary-sheet pre { margin: 24px 0 0; color: #e1e9e3; font-family: var(--sans); font-size: 14px; line-height: 2; white-space: pre-wrap; word-break: break-word; }
+
+@media (max-width: 640px) {
+  .assessment-tool { padding: 28px 18px; }
+  .assessment-intro, .form-grid { grid-template-columns: 1fr; }
+  .assessment-intro { gap: 16px; }
+  .assessment-intro .section-kicker { grid-row: auto; }
+  .form-wide { grid-column: auto; }
+  .summary-sheet-head { flex-direction: column; }
+}
