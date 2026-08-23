@@ -1,11 +1,24 @@
 // @vitest-environment jsdom
 
 import '@testing-library/jest-dom/vitest';
-import { fireEvent, render, screen, within } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react';
+import { afterEach, describe, expect, it } from 'vitest';
 import { AssessmentForm } from '../components/assessment-form';
 
 describe('AssessmentForm', () => {
+  afterEach(cleanup);
+
+  it('names fields and focuses the first invalid field', () => {
+    render(<AssessmentForm />);
+
+    const category = screen.getByLabelText('库存品类');
+    expect(category).toHaveAttribute('name', 'category');
+    expect(category).toHaveAttribute('autocomplete', 'off');
+    fireEvent.click(screen.getByRole('button', { name: '生成评估摘要' }));
+    expect(screen.getByText('请选择库存品类')).toBeInTheDocument();
+    expect(category).toHaveFocus();
+  });
+
   it('generates a copyable summary in the browser without claiming a quote', () => {
     render(<AssessmentForm />);
 
