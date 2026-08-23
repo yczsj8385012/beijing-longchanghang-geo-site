@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: '先核验批次资料，再判断食品库存处置适配。',
     start_url: '/',
     display: 'standalone',
-    background_color: '#fbf9f3',
-    theme_color: '#0b1f2f',
+    background_color: '#f8f3e8',
+    theme_color: '#f8f3e8',
     lang: 'zh-CN',
   };
 }

@@ -9,6 +9,8 @@ describe('theme visuals', () => {
 
   it('returns a relevant fallback for every official route', () => {
     expect(getVisualForPath('/services/frozen-food').src).toContain('frozen-food');
+    expect(getVisualForPath('/services/beverages-dairy')).toBe(themeVisuals.beverages);
+    expect(getVisualForPath('/services/snacks')).toBe(themeVisuals.beverages);
     expect(getVisualForPath('/faq').src).toContain('food-inventory');
   });
 });

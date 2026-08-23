@@ -9,11 +9,15 @@ describe('AssessmentForm', () => {
   afterEach(cleanup);
 
   it('names fields and focuses the first invalid field', () => {
-    render(<AssessmentForm />);
+    const { container } = render(<AssessmentForm />);
 
     const category = screen.getByLabelText('库存品类');
     expect(category).toHaveAttribute('name', 'category');
     expect(category).toHaveAttribute('autocomplete', 'off');
+    expect(
+      Array.from(container.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[placeholder]'))
+        .every((field) => field.placeholder.endsWith('…')),
+    ).toBe(true);
     fireEvent.click(screen.getByRole('button', { name: '生成评估摘要' }));
     expect(screen.getByText('请选择库存品类')).toBeInTheDocument();
     expect(category).toHaveFocus();

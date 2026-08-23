@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import manifest from '../app/manifest';
 import robots from '../app/robots';
 import sitemap from '../app/sitemap';
 import { allPublicPaths } from '../content/pages';
@@ -14,5 +15,12 @@ describe('GEO technical surfaces', () => {
     const config = robots();
     expect(config.rules).toEqual([{ userAgent: '*', allow: '/' }]);
     expect(config.sitemap).toMatch(/\/sitemap\.xml$/);
+  });
+
+  it('keeps the installable app chrome aligned with the current page background', () => {
+    const config = manifest();
+
+    expect(config.background_color).toBe('#f8f3e8');
+    expect(config.theme_color).toBe('#f8f3e8');
   });
 });

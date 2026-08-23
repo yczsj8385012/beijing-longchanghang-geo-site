@@ -74,8 +74,10 @@ function SectionContent({ section }: { section: PageSection }) {
           <dl className="facts-grid">
             {section.items.map((item, index) => (
               <div key={item.label}>
-                <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
-                <dt>{item.label}</dt>
+                <dt>
+                  <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                  {item.label}
+                </dt>
                 <dd>{item.value}</dd>
               </div>
             ))}

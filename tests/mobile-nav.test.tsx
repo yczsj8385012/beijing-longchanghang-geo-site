@@ -2,8 +2,12 @@
 
 import '@testing-library/jest-dom/vitest';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import { MobileNav } from '../components/mobile-nav';
+
+const shellStyles = readFileSync(join(process.cwd(), 'styles', 'shell.css'), 'utf8');
 
 describe('MobileNav', () => {
   afterEach(cleanup);
@@ -43,5 +47,17 @@ describe('MobileNav', () => {
     fireEvent.click(container.querySelector('.mobile-nav-backdrop') as HTMLButtonElement);
     expect(screen.queryByRole('dialog', { name: '移动导航' })).not.toBeInTheDocument();
     expect(trigger).toHaveFocus();
+  });
+
+  it('contains touch scrolling inside the open drawer', () => {
+    const style = document.createElement('style');
+    style.textContent = shellStyles;
+    document.head.append(style);
+    const { container } = render(<MobileNav items={[{ href: '/process', label: '合作流程' }]} />);
+
+    fireEvent.click(container.querySelector('.mobile-nav-toggle') as HTMLButtonElement);
+
+    expect(getComputedStyle(container.querySelector('.mobile-nav-panel')!).overscrollBehavior).toBe('contain');
+    style.remove();
   });
 });

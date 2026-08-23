@@ -32,6 +32,15 @@ describe('PageSections', () => {
     expect(container.querySelector('.check-list')?.tagName).toBe('OL');
   });
 
+  it('keeps description-list groups limited to terms and descriptions', () => {
+    const frozen = pages.find((page) => page.path === '/services/frozen-food')!;
+    const { container } = render(<PageSections page={frozen} />);
+    const factGroup = container.querySelector('.facts-grid > div')!;
+
+    expect(Array.from(factGroup.children).map((element) => element.tagName)).toEqual(['DT', 'DD']);
+    expect(factGroup.querySelector('dt [aria-hidden="true"]')).toHaveTextContent('01');
+  });
+
   it('preserves the publisher and safe external link on source cards', () => {
     const faq = pages.find((page) => page.path === '/faq')!;
     render(<PageSections page={faq} />);

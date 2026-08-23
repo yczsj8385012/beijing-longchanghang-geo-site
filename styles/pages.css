@@ -190,7 +190,7 @@
 .section-heading p { max-width: 690px; margin: 0; color: var(--text-muted); line-height: 1.8; }
 
 .link-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-.route-card { min-height: 285px; padding: 30px 34px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; flex-direction: column; background: var(--surface-white); transition: transform .2s ease, background-color .2s ease; }
+.route-card { min-height: 285px; padding: 30px 34px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; flex-direction: column; background: var(--surface-white); transition: transform .2s ease; }
 .route-card:hover, .route-card:focus-visible { position: relative; z-index: 1; background: var(--brand-cream); transform: translateY(-4px); }
 .route-card-top { display: flex; justify-content: space-between; align-items: center; }
 .card-number { color: var(--brand-tomato); font-family: ui-monospace, monospace; font-size: 11px; }
@@ -212,7 +212,7 @@
 
 .facts-grid { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .facts-grid > div { position: relative; min-height: 176px; padding: 26px 30px; border: 1px solid var(--line); background: var(--brand-cream); }
-.facts-grid > div > span { position: absolute; top: 22px; right: 24px; color: var(--brand-tomato); font-family: ui-monospace, monospace; font-size: 10px; font-weight: 700; }
+.facts-grid dt > span { position: absolute; top: 22px; right: 24px; color: var(--brand-tomato); font-family: ui-monospace, monospace; font-size: 10px; font-weight: 700; }
 .facts-grid dt { max-width: calc(100% - 42px); margin-bottom: 30px; color: var(--text-muted); font-size: 12px; font-weight: 700; letter-spacing: .06em; }
 .facts-grid dd { max-width: 470px; margin: 0; font-family: var(--serif); font-size: 18px; line-height: 1.65; }
 
@@ -225,12 +225,12 @@
 .section-faq { max-width: 960px; }
 .faq-list { border-top: 1px solid var(--line); }
 .faq-list details { border-bottom: 1px solid var(--line); }
-.faq-list summary { cursor: pointer; list-style: none; min-height: 84px; padding: 24px 4px; display: flex; justify-content: space-between; align-items: center; gap: 24px; font-family: var(--serif); font-size: 19px; font-weight: 700; transition: color .2s ease, padding .2s ease; }
+.faq-list summary { cursor: pointer; list-style: none; min-height: 84px; padding: 24px 4px; display: flex; justify-content: space-between; align-items: center; gap: 24px; font-family: var(--serif); font-size: 19px; font-weight: 700; }
 .faq-list summary::-webkit-details-marker { display: none; }
 .faq-list summary:hover { color: var(--brand-tomato); padding-left: 10px; }
 .faq-list summary:focus-visible { border-radius: var(--radius-sm); outline: 3px solid var(--focus-ring); outline-offset: 4px; }
 .faq-list summary > span:first-child { color: inherit; transform: none; }
-.faq-toggle { flex: 0 0 30px; height: 30px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--brand-tomato); font-family: var(--sans); font-size: 18px; font-weight: 400; transition: transform .2s ease, background-color .2s ease; }
+.faq-toggle { flex: 0 0 30px; height: 30px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--brand-tomato); font-family: var(--sans); font-size: 18px; font-weight: 400; transition: transform .2s ease; }
 .faq-list details[open] .faq-toggle { background: var(--brand-tomato); color: var(--white); transform: rotate(45deg); }
 .faq-answer { padding: 0 52px 28px 4px; }
 .faq-answer p { max-width: 780px; margin: 0; padding: 0; color: var(--text-muted); line-height: 1.85; }

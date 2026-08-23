@@ -16,6 +16,11 @@ for (const path of paths) {
   }
 }
 
+for (const path of ['/sitemap.xml', '/robots.txt', '/llms.txt', '/manifest.webmanifest']) {
+  const response = await fetch(`${base}${path}`);
+  if (!response.ok) failures.push(`${path}: HTTP ${response.status}`);
+}
+
 if (failures.length) {
   console.error(failures.join('\n'));
   process.exit(1);
