@@ -11,7 +11,9 @@
     "start": "vinext start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "test": "vitest run --config vitest.config.ts",
-    "verify:routes": "node scripts/verify-routes.mjs"
+    "verify:routes": "node scripts/verify-routes.mjs",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "verify:assets": "node scripts/verify-assets.mjs"
   },
   "dependencies": {
     "next": "16.2.6",
@@ -34,6 +36,7 @@
     "eslint-config-next": "16.2.6",
     "jsdom": "^29.1.1",
     "react-server-dom-webpack": "19.2.6",
+    "sharp": "^0.35.3",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
     "vinext": "1.0.0-beta.3",
