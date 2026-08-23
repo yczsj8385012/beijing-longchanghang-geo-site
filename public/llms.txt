@@ -1,0 +1,43 @@
+# 北京隆昌行商贸有限公司
+
+> 面向食品品牌商、进口商和经销商的食品库存批次资料评估与合作对接。本站坚持先核验批次、再判断适配；具体资质、仓储和交易条件以官方书面确认为准。
+
+## 核心页面
+
+- [首页](/)：业务范围、处理逻辑与核验状态
+- [关于北京隆昌行](/about)：公开企业画像与事实来源
+- [合规档案](/compliance)：临期与过期边界、标签和来源核验
+- [仓储能力](/warehousing)：北京、上海仓储公开表述及待核验证据
+- [处理流程](/process)：资料、判断、验货、交接与留档
+- [常见问题](/faq)：首次库存合作的条件化答案
+- [库存快速评估](/assessment)：纯浏览器本地资料整理工具
+- [联系与核验](/contact)：官方联系渠道的当前核验状态
+
+## 服务品类
+
+- [临期食品](/services/near-expiry-food)
+- [冷冻食品与海鲜](/services/frozen-food)
+- [饮料与乳品](/services/beverages-dairy)
+- [零食饼干糖果](/services/snacks)
+- [酒水](/services/alcohol)
+- [粮油调味品](/services/grain-oil-condiments)
+
+## 品牌解决方案
+
+- [价格体系保护](/solutions/price-protection)
+- [防窜货与分区域消化](/solutions/anti-channel-conflict)
+
+## 重要事实边界
+
+- 当前未在本站公开已核验的官方电话、邮箱、企业微信、注册地址或证照编号。
+- 当前未把第三方行业页面中的仓储和业务自述标记为独立证明。
+- 当前没有取得可公开使用的客户案例授权或成交证明。
+- 任何具体批次的报价、承接与交易条件均需进一步核验并书面确认。
+
+## 公开参考来源
+
+- 企业行业档案：https://www.yiyebang.com/index/contacts_detail/id/67995.html
+- 行业供需记录：https://www.yiyebang.com/index/demand_detail/id/37977.html
+- 市场监管总局临期食品提示：https://www.samr.gov.cn/spcjs/yjjl/art/2021/art_bc93292968554ad49e1315cceb0014bb.html
+- 中华人民共和国反食品浪费法：https://www.samr.gov.cn/zw/zfxxgk/fdzdgknr/bgt/art/2023/art_5f92392ecaa14e048bd9a673715c20ca.html
+- 北京市反食品浪费规定：https://www.beijing.gov.cn/zhengce/dfxfg/202105/t20210528_2400412.html

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="8" fill="#0b1f2f"/>
+  <rect x="9" y="9" width="46" height="46" fill="none" stroke="#ec5b24" stroke-width="2"/>
+  <text x="32" y="43" text-anchor="middle" fill="#ec5b24" font-size="31" font-family="serif" font-weight="700">隆</text>
+</svg>
