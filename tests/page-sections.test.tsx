@@ -2,9 +2,13 @@
 
 import '@testing-library/jest-dom/vitest';
 import { render, screen } from '@testing-library/react';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { PageSections } from '../components/page-sections';
 import { pages } from '../content/pages';
+
+const pageStyles = readFileSync(join(process.cwd(), 'styles', 'pages.css'), 'utf8');
 
 describe('PageSections', () => {
   it('renders homepage links and the verification notice as readable content', () => {
@@ -35,5 +39,24 @@ describe('PageSections', () => {
     expect(screen.getByText('国家市场监督管理总局')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /查看原始页面/ })).toHaveAttribute('target', '_blank');
     expect(screen.getByRole('link', { name: /查看原始页面/ })).toHaveAttribute('rel', 'noreferrer');
+  });
+
+  it('rotates only the FAQ toggle and preserves the intended answer spacing when open', () => {
+    const style = document.createElement('style');
+    style.textContent = pageStyles;
+    document.head.append(style);
+    const faq = pages.find((page) => page.path === '/faq')!;
+    const { container } = render(<PageSections page={faq} />);
+    const details = container.querySelector('details')!;
+    const question = details.querySelector('summary > span:first-child')!;
+    const toggle = details.querySelector('.faq-toggle')!;
+    const answer = details.querySelector('.faq-answer p')!;
+
+    details.setAttribute('open', '');
+
+    expect(getComputedStyle(question).transform).toBe('none');
+    expect(getComputedStyle(toggle).transform).toBe('rotate(45deg)');
+    expect(getComputedStyle(answer).paddingBottom).toBe('0px');
+    style.remove();
   });
 });

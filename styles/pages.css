@@ -76,9 +76,6 @@
 .faq-list details { border-bottom: 1px solid var(--line); }
 .faq-list summary { cursor: pointer; list-style: none; min-height: 78px; padding: 24px 2px; display: flex; justify-content: space-between; gap: 24px; font-family: var(--serif); font-size: 19px; font-weight: 700; }
 .faq-list summary::-webkit-details-marker { display: none; }
-.faq-list details[open] summary span { transform: rotate(45deg); }
-.faq-list summary span { color: var(--brand-tomato); transition: transform .2s ease; }
-.faq-list details p { max-width: 800px; padding: 0 0 26px; color: var(--muted); line-height: 1.85; }
 .notice { margin-top: 54px; margin-bottom: 54px; padding: 28px 32px; display: flex; gap: 20px; border: 1px solid var(--line); background: var(--brand-cream); }
 .notice-warning { border-color: #d99887; background: #fff1e9; }
 .notice-icon { flex: 0 0 30px; height: 30px; display: grid; place-items: center; border: 1px solid currentColor; border-radius: 50%; color: var(--orange-deep); font-family: var(--serif); font-weight: 900; }
