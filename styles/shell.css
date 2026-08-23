@@ -1,9 +1,9 @@
-.skip-link { position: fixed; left: 16px; top: -60px; z-index: 100; background: var(--brand-tomato); color: var(--white); padding: 12px 18px; }
+.skip-link { position: fixed; left: 16px; top: -60px; z-index: 100; display: inline-flex; align-items: center; min-height: 44px; background: var(--brand-tomato); color: var(--white); padding: 12px 18px; }
 .skip-link:focus { top: 12px; }
 
 .site-header { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgb(248 243 232 / 18%); background: rgb(24 63 52 / 97%); color: var(--white); backdrop-filter: blur(12px); }
 .header-inner { width: min(86.25rem, calc(100% - 48px)); height: 76px; margin: auto; display: grid; grid-template-columns: minmax(250px, 1fr) auto minmax(150px, 1fr); align-items: center; gap: 24px; }
-.brand { display: inline-flex; align-items: center; gap: 12px; width: max-content; }
+.brand { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; width: max-content; }
 .brand-mark { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid var(--brand-tomato); color: var(--brand-tomato); font-family: var(--serif); font-size: 20px; transform: rotate(-2deg); }
 .brand-copy { display: grid; gap: 2px; }
 .brand-copy strong { letter-spacing: .08em; font-size: 15px; }
@@ -26,7 +26,7 @@
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 28px; min-height: 52px; padding: 0 24px; border: 1px solid transparent; font-size: 14px; font-weight: 700; transition: transform .2s ease; }
 .button:hover { transform: translateY(-2px); }
 .button-primary { background: var(--brand-tomato); color: var(--white); }
-.text-link { border-bottom: 1px solid rgb(255 255 255 / 35%); padding: 10px 0; font-size: 13px; }
+.text-link { display: inline-flex; align-items: center; min-height: 44px; border-bottom: 1px solid rgb(255 255 255 / 35%); padding: 10px 0; font-size: 13px; }
 .manifest-card { position: relative; min-height: 405px; padding: 28px; background: var(--brand-cream); color: var(--text-ink); box-shadow: var(--shadow-offset); transform: rotate(1.2deg); }
 .manifest-card::before { content: ''; position: absolute; inset: 10px; pointer-events: none; border: 1px solid var(--line); }
 .manifest-head { position: relative; display: grid; grid-template-columns: 1fr auto; border-bottom: 2px solid var(--text-ink); padding: 6px 4px 20px; }
@@ -47,6 +47,7 @@
 .site-footer { padding: 68px max(24px, calc((100% - var(--content-max)) / 2)) 28px; background: #102f28; color: #e3ebe5; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 70px; }
 .footer-grid > div:not(:first-child) { display: grid; align-content: start; gap: 14px; font-size: 13px; }
+.footer-grid > div:not(:first-child) > a { display: inline-flex; align-items: center; min-height: 44px; margin-inline: -4px; padding-inline: 4px; }
 .footer-brand { color: var(--white); }
 .footer-note { max-width: 540px; margin: 28px 0 0; color: #c0d0c6; font-size: 12px; line-height: 1.8; }
 .footer-title { color: var(--brand-tomato); font-size: 11px; letter-spacing: .12em; }

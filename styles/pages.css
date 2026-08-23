@@ -47,7 +47,7 @@
 .source-row div { display: grid; gap: 4px; }
 .source-row span, .source-row small { color: var(--muted); font-size: 11px; }
 .source-row strong { font-family: var(--serif); }
-.source-row a { color: var(--orange-deep); font-size: 12px; font-weight: 700; }
+.source-row a { display: inline-flex; align-items: center; min-height: 44px; color: var(--orange-deep); font-size: 12px; font-weight: 700; }
 .page-cta { padding: 95px max(24px, calc((100% - var(--content-max)) / 2)); background: var(--brand-tomato); color: var(--white); }
 .page-cta > span { font-size: 11px; letter-spacing: .12em; }
 .page-cta h2 { max-width: 800px; margin: 18px 0; font-family: var(--serif); font-size: clamp(38px, 5vw, 64px); line-height: 1.2; }
