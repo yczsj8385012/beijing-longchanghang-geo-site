@@ -15,5 +15,12 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="zh-CN"><body><SiteShell>{children}</SiteShell></body></html>;
+  return (
+    <html lang="zh-CN">
+      <head>
+        <meta name="baidu-site-verification" content="codeva-UiFh5eDDO6" />
+      </head>
+      <body><SiteShell>{children}</SiteShell></body>
+    </html>
+  );
 }
