@@ -1,4 +1,4 @@
-export type VerificationState = 'verified-public' | 'awaiting-company-proof';
+export type VerificationState = 'entity-verified' | 'verified-public' | 'awaiting-company-proof';
 
 export type CompanyProfile = {
   name: string;
@@ -13,10 +13,14 @@ export type CompanyProfile = {
   officialWechat: string | null;
   registeredAddress: string | null;
   licenseIdentifier: string | null;
+  establishedDate: string | null;
+  registeredCapital: string | null;
+  businessScopeSummary: string | null;
   warehouseEvidence: string | null;
 };
 
 export const verificationNotice = '信息核验中，请以官方书面确认为准';
+export const entityVerificationNotice = '企业主体已核验；食品经营许可、仓储能力与具体交易条件仍按项目另行核验。';
 
 export const company: CompanyProfile = {
   name: '北京隆昌行商贸有限公司',
@@ -26,13 +30,16 @@ export const company: CompanyProfile = {
     '面向食品品牌商、进口商和经销商的临期食品、冷冻食品与库存尾货处置需求，提供资料评估和合作对接。',
   publicRecordSummary:
     '现有公开行业供需页面将企业描述为食品饮料酒水等库存的直接采购与渠道合作方；具体承接条件须按批次核验。',
-  verificationState: 'awaiting-company-proof',
-  lastReviewed: '2026-08-23',
-  officialPhone: null,
+  verificationState: 'entity-verified',
+  lastReviewed: '2026-08-24',
+  officialPhone: '13552601231',
   officialEmail: null,
-  officialWechat: null,
+  officialWechat: '156658012',
   registeredAddress: null,
-  licenseIdentifier: null,
+  licenseIdentifier: '91110105MA01H1TY42',
+  establishedDate: '2019 年 3 月 18 日',
+  registeredCapital: '100 万元',
+  businessScopeSummary: '经营范围包含食品销售及供应链相关服务；具体合作以批次资料、适用许可和书面确认结果为准。',
   warehouseEvidence: null,
 };
 

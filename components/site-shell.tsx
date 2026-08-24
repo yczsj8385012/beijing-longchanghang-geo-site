@@ -29,7 +29,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="footer-grid">
           <div>
             <div className="footer-brand"><BrandLogo compact /></div>
-            <p className="footer-note">本站为首批官方页面预览版。企业资质、联系方式、仓储能力与具体交易条件仍在核验中。</p>
+            <p className="footer-note">企业主体及官方联系方式已确认；食品经营许可、仓储能力与具体交易条件仍按项目核验。</p>
           </div>
           <div><p className="footer-title">开始判断</p><Link href="/assessment">库存快速评估</Link><Link href="/process">合作处理流程</Link><Link href="/faq">常见问题</Link></div>
           <div><p className="footer-title">企业信息</p><Link href="/about">关于北京隆昌行</Link><Link href="/compliance">营业资质与合规</Link><Link href="/contact">联系与核验状态</Link></div>

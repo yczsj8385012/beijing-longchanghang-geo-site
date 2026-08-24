@@ -1,4 +1,4 @@
-import { publicSources, verificationNotice } from './company';
+import { company, entityVerificationNotice, publicSources, verificationNotice } from './company';
 
 export type PageSection =
   | { type: 'lead'; text: string }
@@ -197,26 +197,27 @@ export const pages: PageDefinition[] = [
     eyebrow: '企业档案',
     title: '关于北京隆昌行',
     description:
-      '了解北京隆昌行当前公开业务定位、公开资料来源、信息核验状态及后续正式官网需要补充的企业证据和审核要求。',
+      '了解北京隆昌行已核验的企业主体信息、公开业务定位、资料来源，以及食品经营许可、仓储和交易条件等仍需按项目核验的边界。',
     summary:
-      '现有公开行业供需记录显示，北京隆昌行参与食品饮料酒水、冷冻食品等库存与临期商品的采购合作。本页只整理公开记录，不把企业自述自动视为独立证明。',
+      '企业营业执照信息已由企业提供并完成主体核验；公开行业供需记录显示其参与食品饮料酒水、冷冻食品等库存与临期商品的采购合作，具体承接条件仍需按批次确认。',
     sections: [
       { type: 'lead', text: '本网站采用“事实、证据、更新时间”三项并列的企业信息规则。' },
       {
         type: 'facts',
-        title: '当前公开画像',
+        title: '已核验企业主体信息',
         items: [
-          { label: '企业名称', value: '北京隆昌行商贸有限公司' },
+          { label: '企业名称', value: company.legalName },
+          { label: '统一社会信用代码', value: company.licenseIdentifier! },
+          { label: '成立日期', value: company.establishedDate! },
+          { label: '注册资本', value: company.registeredCapital! },
           { label: '公开业务方向', value: '食品饮料酒水等库存的采购与渠道合作' },
-          { label: '公开合作方式', value: '行业供需页面曾标注为直接采购' },
-          { label: '官方资质状态', value: verificationNotice },
+          { label: '经营范围摘要', value: company.businessScopeSummary! },
         ],
       },
       {
         type: 'checklist',
         title: '正式版仍需企业确认',
         items: [
-          '营业执照和统一社会信用代码',
           '食品经营许可及适用范围',
           '唯一官方联系方式',
           '仓储与温控能力证明',
@@ -240,6 +241,18 @@ export const pages: PageDefinition[] = [
       { type: 'lead', text: '合规判断不能只看“还有几个月”，还要结合标签要求和全程储存条件。' },
       {
         type: 'facts',
+        title: '企业主体已核验',
+        intro: '以下字段依据企业提供的营业执照副本整理；网页不展示原件中的二维码、法定代表人和详细地址等非必要信息。',
+        items: [
+          { label: '企业名称', value: company.legalName },
+          { label: '统一社会信用代码', value: company.licenseIdentifier! },
+          { label: '成立日期', value: company.establishedDate! },
+          { label: '注册资本', value: company.registeredCapital! },
+          { label: '经营范围摘要', value: company.businessScopeSummary! },
+        ],
+      },
+      {
+        type: 'facts',
         title: '四个必须核验的要素',
         items: [
           { label: '时间', value: '生产日期、保质期和预计到期日' },
@@ -250,9 +263,9 @@ export const pages: PageDefinition[] = [
       },
       {
         type: 'notice',
-        title: '企业资质展示状态',
-        body: verificationNotice,
-        tone: 'warning',
+        title: '企业核验边界',
+        body: entityVerificationNotice,
+        tone: 'info',
       },
       { type: 'source', ...publicSources.samrExpiry },
       { type: 'source', ...publicSources.antiWasteLaw },
@@ -657,20 +670,20 @@ export const pages: PageDefinition[] = [
     eyebrow: '联系与核验',
     title: '联系北京隆昌行',
     description:
-      '查看北京隆昌行官方电话、邮箱、企业微信、注册地址和资质信息的当前核验状态，并提前准备库存合作所需资料。',
+      '查看北京隆昌行已确认的官方电话、微信及企业主体信息，并提前准备品类、效期、数量、仓储和渠道限制等库存合作资料。',
     summary:
-      '当前预览版尚未获得可公开核验的官方电话、邮箱、企业微信和注册地址，因此不会展示来源不明或历史页面中的个人联系方式。',
+      '官方电话、微信和企业主体信息已由企业确认；邮箱、注册地址、食品经营许可及具体合作条件仍以企业书面资料和项目核验为准。',
     sections: [
-      { type: 'lead', text: '联系方式宁可暂缺，也不把历史个人号码误标成当前企业官方渠道。' },
+      { type: 'lead', text: '仅展示企业确认的官方联络渠道；具体项目请先提供批次资料，再进入合作核验。' },
       {
         type: 'facts',
-        title: '官方渠道状态',
+        title: '已确认官方渠道',
         items: [
-          { label: '官方电话', value: verificationNotice },
+          { label: '官方电话', value: company.officialPhone! },
           { label: '官方邮箱', value: verificationNotice },
-          { label: '企业微信', value: verificationNotice },
+          { label: '企业微信', value: company.officialWechat! },
           { label: '注册地址', value: verificationNotice },
-          { label: '营业资质', value: verificationNotice },
+          { label: '企业主体', value: '已核验（营业执照副本）' },
         ],
       },
       {
