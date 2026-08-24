@@ -12,7 +12,14 @@ export const themeVisuals = {
     alt: '食品包装与库存分类主题视觉',
     kind: 'concept',
     disclosure: '主题视觉示意',
-    objectPosition: '58% center',
+    objectPosition: '62% center',
+  },
+  nearExpiry: {
+    src: '/images/theme/near-expiry-food-theme.webp',
+    alt: '常温食品库存核验主题视觉',
+    kind: 'concept',
+    disclosure: '主题视觉示意',
+    objectPosition: '62% center',
   },
   frozen: {
     src: '/images/theme/frozen-food-theme.webp',
@@ -31,6 +38,7 @@ export const themeVisuals = {
 } satisfies Record<string, ThemeVisual>;
 
 export function getVisualForPath(path: string): ThemeVisual {
+  if (path === '/services/near-expiry-food') return themeVisuals.nearExpiry;
   if (path === '/services/frozen-food') return themeVisuals.frozen;
   if (['/services/beverages-dairy', '/services/snacks'].includes(path)) {
     return themeVisuals.beverages;
